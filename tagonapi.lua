@@ -1,23 +1,24 @@
 ffi.cdef[[
     void keybd_event(unsigned char bVk, unsigned char bScan, int dwFlags, int dwExtraInfo);
-    int MapVirtualKeyA(int uCode, int uMapType);
-    short GetAsyncKeyState(int vKey);
-    short GetKeyState(int nVirtKey);
+    int MapVirtualKeyA(int uCode, int uMapType);//模拟键盘按键
+    short GetAsyncKeyState(int vKey);//获取建码
+    short GetKeyState(int nVirtKey);//是否大写
 
     typedef struct { int x, y; } POINT;
     void* GetDesktopWindow();
-    int SetCursorPos(int x, int y);
-    int GetCursorPos(POINT* lpPoint);
-    int ShowCursor(int bShow);
+    int SetCursorPos(int x, int y);//设置鼠标位置
+    int GetCursorPos(POINT* lpPoint);//获取鼠标位置
+    int ShowCursor(int bShow);//隐藏鼠标箭头
 
     typedef unsigned int UINT;
-    void* GetForegroundWindow(void);
-    int GetWindowTextA(void* hWnd, char* lpString, int nMaxCount);
-    void* GetModuleHandleA(const char* lpModuleName);
-    UINT GetModuleFileNameA(void* hModule, char* lpFilename, UINT nSize);
+    void* GetForegroundWindow(void);//获取当前窗口句柄
+    int GetWindowTextA(void* hWnd, char* lpString, int nMaxCount);//获取窗口标题
+    void* GetModuleHandleA(const char* lpModuleName);//获取当前窗口所属的模块句柄
+    UINT GetModuleFileNameA(void* hModule, char* lpFilename, UINT nSize);//获取模块文件名
     int MessageBoxA(void* hWnd, const char* lpText, const char* lpCaption, UINT uType);
+	//int MessageBoxA(void *w   , const char *txt, const char *cap, int type);
 
-    typedef struct {
+    typedef struct {//定义屏幕尺寸结构体
         int32_t width;
         int32_t height;
     } ScreenSize;
@@ -38,7 +39,7 @@ ffi.cdef[[
         POINT         pt;
         unsigned long lPrivate;
     } MSG, *PMSG, *LPMSG;
-    int PeekMessageA(LPMSG lpMsg, void* hWnd, unsigned int wMsgFilterMin, unsigned int wMsgFilterMax, unsigned int wRemoveMsg);
+    int PeekMessageA(LPMSG lpMsg, void* hWnd, unsigned int wMsgFilterMin, unsigned int wMsgFilterMax, unsigned int wRemoveMsg);//滚轮检测
 
     void* CreateFileA(
         const char*                lpFileName,
@@ -93,7 +94,7 @@ ffi.cdef[[
         void** this;
     }aclass;
 
-    uintptr_t GetClipboardData(uint32_t uFormat);
+    uintptr_t GetClipboardData(uint32_t uFormat);//获取copy
     int IsClipboardFormatAvailable(uint32_t format);
     bool OpenClipboard(void* hWndNewOwner);
     bool EmptyClipboard();
@@ -104,7 +105,7 @@ ffi.cdef[[
     void* lstrcpyA(void* lpString1, const char* lpString2);
     bool SetClipboardData(uint32_t uFormat, uintptr_t hMem);
 
-    void* __stdcall ShellExecuteA(void* hwnd, const char* op, const char* file, const char* params, const char* dir, int show_cmd);
+    void* __stdcall ShellExecuteA(void* hwnd, const char* op, const char* file, const char* params, const char* dir, int show_cmd);//hwid
     typedef void(__thiscall* find_or_load_model_t)(void*, const char*);
     typedef long(__thiscall* get_file_time_t)(void* this, const char* pFileName, const char* pPathID);
     typedef bool(__thiscall* file_exists_t)(void* this, const char* pFileName, const char* pPathID);
