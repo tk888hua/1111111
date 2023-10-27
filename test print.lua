@@ -13,4 +13,6 @@ function color_t:__tostring()return string.format("color_t(%.2f, %.2f, %.2f, %.2
 function color_t:__tostring() return string.format("color_t(%d, %d, %d, %d)", self.red*255, self.green*255, self.blue*255, self.alpha*255) end
 function entity_t:__tostring()return "entity_t"end
 print(vec3_t.new(1, 1, 1), vec2_t.new(1, 1), color_t.new(255, 255, 255, 255), entitylist.get_local_player())              -- vec3_t(1.00, 1.00, 1.00)  vec2_t(1.00, 1.00)  color_t(1.00, 1.00, 1.00, 1.00)  entity_t
-
+client.register_callback("paint", function()
+    print("stfu")
+end)
