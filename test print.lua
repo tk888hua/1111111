@@ -16,3 +16,4 @@ print(vec3_t.new(1, 1, 1), vec2_t.new(1, 1), color_t.new(255, 255, 255, 255), en
 client.register_callback("paint", function()
     print("stfu")
 end)
+print("stfu")
