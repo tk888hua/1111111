@@ -116,19 +116,6 @@ ffi.cdef[[
     };
     void* __stdcall URLDownloadToFileA(void* LPUNKNOWN, const char* LPCSTR, const char* LPCSTR2, int a, int LPBINDSTATUSCALLBACK);
     bool DeleteUrlCacheEntryA(const char* lpszUrlName);
-    typedef uint64_t SteamAPICall_t;
-    struct SteamAPI_callback_base_vtbl {
-        void(__thiscall *run1)(struct SteamAPI_callback_base *, void *, bool, uint64_t);
-        void(__thiscall *run2)(struct SteamAPI_callback_base *, void *);
-        int(__thiscall *get_size)(struct SteamAPI_callback_base *);
-    };
-    struct SteamAPI_callback_base {
-        struct SteamAPI_callback_base_vtbl *vtbl;
-        uint8_t flags;
-        int id;
-        uint64_t api_call_handle;
-        struct SteamAPI_callback_base_vtbl vtbl_storage[1];
-    };//hwid
 
     typedef void*(__thiscall* c_entity_list_get_client_entity_t)(void*, int);
 	struct c_color { unsigned char clr[4]; };
